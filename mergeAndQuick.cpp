@@ -118,23 +118,40 @@ int main()
 		int n;
     	//freopen("output.out","w",stdout);
     	//string str;
+        cout<<"Enter the size of the array:";
     	cin>>n;  	//input args
+        cout<<endl;
     	int A[50];
+        cout<<"Enter the array:";
     	for(int i=0;i<n;i++)
     	{
     		cin>>A[i];
     	}
-    	
-        merge_sort(A,0,n);
-        for(int i=0;i<n;i++)
-        {
-            cout<<A[i]<<" ";
-        }
+    	cout<<endl;
+        cout<<"Enter M for merge sort and Q for quick sort";
+        char ch;
+        cin>>ch;
         cout<<endl;
-    	qst(A,0,n);
-    	for(int i=0;i<n;i++)
-    	{
-    		cout<<A[i]<<" ";
-    	}
+        if(ch=='M')
+        {
+            cout<<"Running merge sort...."<<endl;
+            merge_sort(A,0,n);
+            cout<<"The array after merge sort is:"<<endl;
+            for(int i=0;i<n;i++)
+            {
+                cout<<A[i]<<" ";
+            }
+        }
+        //cout<<endl;
+        else
+        {
+            cout<<"Running quick sort...."<<endl;
+    	    qst(A,0,n);
+            cout<<"The array after quick sort is:"<<endl;
+    	    for(int i=0;i<n;i++)
+    	    {
+    		   cout<<A[i]<<" ";
+    	    }
+        }
     	return 0;
 }
