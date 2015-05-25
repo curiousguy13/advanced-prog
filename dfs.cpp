@@ -1,4 +1,21 @@
 //dfs for an undirected graph using adjacency matrix
+/*
+5
+1
+2
+3
+4
+5
+6
+1 2
+2 3
+3 4
+4 5
+3 5
+1 4
+
+
+*/
 #include <bits/stdc++.h>
 #define MAX 1000
 #define MOD 1000000007
@@ -82,6 +99,7 @@ void inputMatrix(T &mat)
 }
 int dfs(vvi graph,vi vertexVal,vi &visited,int val,int totalVertices,int start=0)
 {
+    cout<<start+1<<" ";
 	visited[start]=1;
 	if(vertexVal[start]==val)
 	{
@@ -125,19 +143,24 @@ int main()
     }
     cout<<"The graph matrix is:"<<endl;
     displayMatrix(graph,V);
-    cout<<"Enter the value of the node you want to search for:";
-    cin>>val;
+   // cout<<"Enter the value of the node you want to search for:";
+   // cin>>val;
     int nodeIndex=0;
+    dfs(graph,vertexVal,visited,val,V,0);
+    /*
     for(int i=0;i<V;i++)
     {
     	nodeIndex=dfs(graph,vertexVal,visited,val,V,i);
     	if(nodeIndex!=-1)
     		break;
     }
+    */
+    /*
     if(nodeIndex!=-1)
     	cout<<"The value "<<val<<" is present in node "<<nodeIndex+1<<endl;
     else
     	cout<<"The value "<<val<<" is not present in the graph"<<endl;
+    */
     return 0;
 
 }

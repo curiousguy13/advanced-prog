@@ -1,4 +1,21 @@
 //bfs for an undirected graph using adjacency matrix
+/*
+5
+1
+2
+3
+4
+5
+6
+1 2
+2 3
+3 4
+4 5
+3 5
+1 4
+
+
+*/
 #include <bits/stdc++.h>
 #define MAX 1000
 #define MOD 1000000007
@@ -99,11 +116,15 @@ int dfs(vvi graph,vi vertexVal,vi &visited,int val,int totalVertices,int start=0
 
 int bfs(vvi graph,vi vertexVal,vi &visited,int val,int totalVertices,int start=0)
 {
+    
     queue<int> q;
     q.push(start);
     for(int i=0;i<totalVertices;++i)
     {
+
         start=q.front();
+        visited[start]=1;
+        cout<<start+1<<" ";
         q.pop();
         if(vertexVal[start]==val)
         {
@@ -111,9 +132,11 @@ int bfs(vvi graph,vi vertexVal,vi &visited,int val,int totalVertices,int start=0
         }    
         for (int j = 0; j < totalVertices; ++j)
         {
-            if(graph[start][j]==1)
+            if(graph[start][j]==1&&visited[j]==0)
             {
+		//cout<<endl<<start+1<<"pushing"<<j+1<<endl;
                 q.push(j);
+		visited[j]=1;
             }
         }
     }
@@ -149,9 +172,13 @@ int main()
     }
     cout<<"The graph matrix is:"<<endl;
     displayMatrix(graph,V);
+    /*
     cout<<"Enter the value of the node you want to search for:";
     cin>>val;
+    */
     int nodeIndex=0;
+    bfs(graph,vertexVal,visited,val,V,0);
+    /*
     for(int i=0;i<V;i++)
     {
         nodeIndex=bfs(graph,vertexVal,visited,val,V,i);
@@ -162,6 +189,7 @@ int main()
         cout<<"The value "<<val<<" is present in node "<<nodeIndex+1<<endl;
     else
         cout<<"The value "<<val<<" is not present in the graph"<<endl;
+    */
     return 0;
 
 }
